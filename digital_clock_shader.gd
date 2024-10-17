@@ -5,13 +5,16 @@ extends VBoxContainer
 @export var stand_timer: Timer
 @export var walk_timer: Timer
 #var timer = $"../Timer"
+@export_category("Sounds")
+@export var sit_player: AudioStreamPlayer
+@export var stand_player: AudioStreamPlayer
+@export var walk_player: AudioStreamPlayer
 
 var current_timer
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_timer = sit_timer
-	#sit_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,18 +52,21 @@ func _on_walk_pressed() -> void:
 
 # Timer timeout handlers
 func _on_sit_timer_timeout() -> void:
+	sit_player.play()
 	current_timer.stop()
 	current_timer = stand_timer
 	stand_timer.start()
 	stand_timer.set_paused(false)
 
 func _on_stand_timer_timeout() -> void:
+	stand_player.play()
 	current_timer.stop()
 	current_timer = walk_timer
 	walk_timer.start()
 	walk_timer.set_paused(false)
 	
 func _on_walk_timer_timeout() -> void:
+	walk_player.play()
 	current_timer.stop()
 	current_timer = sit_timer
 	sit_timer.start()

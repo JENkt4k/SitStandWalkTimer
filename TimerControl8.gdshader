@@ -5,7 +5,7 @@ uniform int num = 8; // Default digit
 
 float segment(vec2 uv, bool on) {
     if (!on) return 0.0;
-    
+
     //uv -= position;
     float seg = (1.0 - smoothstep(0.08, 0.09, abs(uv.x))) *
                 (1.0 - smoothstep(0.46, 0.47, abs(uv.y) + abs(uv.x)));

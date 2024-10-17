@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://1rhh1bt2ubsh"]
+[gd_scene load_steps=7 format=3 uid="uid://1rhh1bt2ubsh"]
 
 [ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
 [ext_resource type="Shader" path="res://TimerControl11.gdshader" id="1_xb0ld"]
+[ext_resource type="AudioStream" uid="uid://b8wbikg58hphd" path="res://audio/SitCompleteStanding.ogg" id="3_fb3gt"]
+[ext_resource type="AudioStream" uid="uid://do768asqemwh8" path="res://audio/StandingCompleteWalk.ogg" id="4_gl5pm"]
+[ext_resource type="AudioStream" uid="uid://hpbhk037nlb0" path="res://audio/WalkingCompleteSit.ogg" id="5_kls4v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qs6xh"]
 shader = ExtResource("1_xb0ld")
@@ -16,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("sit_timer", "stand_timer", "walk_timer")]
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("sit_timer", "stand_timer", "walk_timer", "sit_player", "stand_player", "walk_player")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +30,9 @@ script = ExtResource("1_8oedc")
 sit_timer = NodePath("../SitTimer")
 stand_timer = NodePath("../StandTimer")
 walk_timer = NodePath("../WalkTimer")
+sit_player = NodePath("../AudioStreamPlayer")
+stand_player = NodePath("../AudioStreamPlayer2")
+walk_player = NodePath("../AudioStreamPlayer3")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_qs6xh")
@@ -57,6 +63,15 @@ wait_time = 300.0
 
 [node name="WalkTimer" type="Timer" parent="."]
 wait_time = 1500.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fb3gt")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gl5pm")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kls4v")
 
 [connection signal="pressed" from="VBoxContainer/Sit" to="VBoxContainer" method="_on_sit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Stand" to="VBoxContainer" method="_on_stand_pressed"]

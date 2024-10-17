@@ -10,7 +10,7 @@ void fragment() {
     uv -= dot_position;
 	//vec2 uv = 0.5 * vec2(SCREEN_PIXEL_SIZE);
 	//uv -= dot_position * (0.5 * dot_radius);
-    
+
 	vec3 color = mix(vec3(0.0, 2.0, 1.0), vec3(2.0, 0.0, 0.0), sqrt(uv.y));
 	COLOR = vec4(color, 0.0);
 	//COLOR = vec4(uv.x, uv.y, 0.0, 1.0);
