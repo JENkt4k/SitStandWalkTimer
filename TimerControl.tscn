@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
 [ext_resource type="Shader" path="res://TimerControl.gdshader" id="1_xb0ld"]
-[ext_resource type="AudioStream" uid="uid://b8wbikg58hphd" path="res://audio/SitCompleteStanding.ogg" id="3_fb3gt"]
-[ext_resource type="AudioStream" uid="uid://do768asqemwh8" path="res://audio/StandingCompleteWalk.ogg" id="4_gl5pm"]
-[ext_resource type="AudioStream" uid="uid://hpbhk037nlb0" path="res://audio/WalkingCompleteSit.ogg" id="5_kls4v"]
+[ext_resource type="AudioStream" uid="uid://cl31f6fv30x4w" path="res://audio/SitCompleteStanding.ogg" id="3_fb3gt"]
+[ext_resource type="AudioStream" uid="uid://cvu0ispjddufn" path="res://audio/StandingCompleteWalk.ogg" id="4_gl5pm"]
+[ext_resource type="AudioStream" uid="uid://c83h63ukw33rc" path="res://audio/WalkingCompleteSit.ogg" id="5_kls4v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qs6xh"]
 shader = ExtResource("1_xb0ld")
