@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1rhh1bt2ubsh"]
+[gd_scene load_steps=4 format=3 uid="uid://1rhh1bt2ubsh"]
 
 [ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
 [ext_resource type="Shader" path="res://TimerControl11.gdshader" id="1_xb0ld"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u30dy"]
-shader = ExtResource("1_xb0ld")
-shader_parameter/minutes = null
-shader_parameter/seconds = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qs6xh"]
 shader = ExtResource("1_xb0ld")
@@ -21,7 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("timer")]
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("sit_timer", "stand_timer", "walk_timer")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,8 +24,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8oedc")
-shader_material = SubResource("ShaderMaterial_u30dy")
-timer = NodePath("../Timer")
+sit_timer = NodePath("../SitTimer")
+stand_timer = NodePath("../StandTimer")
+walk_timer = NodePath("../WalkTimer")
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
 material = SubResource("ShaderMaterial_qs6xh")
@@ -52,10 +48,19 @@ layout_mode = 2
 text = "Walk
 "
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 120.0
+[node name="SitTimer" type="Timer" parent="."]
+wait_time = 600.0
 autostart = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="StandTimer" type="Timer" parent="."]
+wait_time = 300.0
+
+[node name="WalkTimer" type="Timer" parent="."]
+wait_time = 1500.0
 
 [connection signal="pressed" from="VBoxContainer/Sit" to="VBoxContainer" method="_on_sit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Stand" to="VBoxContainer" method="_on_stand_pressed"]
+[connection signal="pressed" from="VBoxContainer/Walk" to="VBoxContainer" method="_on_walk_pressed"]
+[connection signal="timeout" from="SitTimer" to="VBoxContainer" method="_on_sit_timer_timeout"]
+[connection signal="timeout" from="StandTimer" to="VBoxContainer" method="_on_stand_timer_timeout"]
+[connection signal="timeout" from="WalkTimer" to="VBoxContainer" method="_on_walk_timer_timeout"]
