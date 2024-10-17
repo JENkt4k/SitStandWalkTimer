@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://1rhh1bt2ubsh"]
+
+[ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
+[ext_resource type="Shader" path="res://TimerControl11.gdshader" id="1_xb0ld"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u30dy"]
+shader = ExtResource("1_xb0ld")
+shader_parameter/minutes = null
+shader_parameter/seconds = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qs6xh"]
+shader = ExtResource("1_xb0ld")
+shader_parameter/minutes = null
+shader_parameter/seconds = null
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("timer")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8oedc")
+shader_material = SubResource("ShaderMaterial_u30dy")
+timer = NodePath("../Timer")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+material = SubResource("ShaderMaterial_qs6xh")
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.909093, 0.455777, 0.75547, 1)
+
+[node name="Sit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sit"
+
+[node name="Stand" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Stand"
+
+[node name="Walk" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Walk
+"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/Sit" to="VBoxContainer" method="_on_sit_pressed"]
