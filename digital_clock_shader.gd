@@ -4,7 +4,7 @@ extends VBoxContainer
 @export var sit_timer: Timer
 @export var stand_timer: Timer
 @export var walk_timer: Timer
-#var timer = $"../Timer"
+
 @export_category("Sounds")
 @export var sit_player: AudioStreamPlayer
 @export var stand_player: AudioStreamPlayer
