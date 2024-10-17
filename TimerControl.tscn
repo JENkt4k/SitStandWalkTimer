@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1rhh1bt2ubsh"]
 
 [ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
-[ext_resource type="Shader" path="res://TimerControl11.gdshader" id="1_xb0ld"]
+[ext_resource type="Shader" path="res://TimerControl.gdshader" id="1_xb0ld"]
 [ext_resource type="AudioStream" uid="uid://b8wbikg58hphd" path="res://audio/SitCompleteStanding.ogg" id="3_fb3gt"]
 [ext_resource type="AudioStream" uid="uid://do768asqemwh8" path="res://audio/StandingCompleteWalk.ogg" id="4_gl5pm"]
 [ext_resource type="AudioStream" uid="uid://hpbhk037nlb0" path="res://audio/WalkingCompleteSit.ogg" id="5_kls4v"]
@@ -38,6 +38,7 @@ walk_player = NodePath("../AudioStreamPlayer3")
 material = SubResource("ShaderMaterial_qs6xh")
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 color = Color(0.909093, 0.455777, 0.75547, 1)
 
