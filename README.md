@@ -6,10 +6,11 @@
 
 # Optimal Sit-Stand-Walk
 
-In order to maximize results I've used CGPT to collect and distill research for optimal results. To fill a 8 hr workday, the maximums for daily total time and individaul interval posisitions were used.
+This project aims to optimize health and productivity by balancing sitting, standing, and walking during an 8-hour workday. Using research distilled by CGPT, the project ensures that the daily total time for each activity and individual interval durations are within recommended health limits.
 
-A one day project that uses Godot 4+ as an new dev environment, new language and experiments with the power of shaders with and segmented clock from shader tutorial. AI was tested as a "peer" developer with limited benefit in development but a boost in research and refinement 
-hopefully no hallucinations in sources :) 
+This was a one-day experiment using Godot 4+ as a new development environment, along with its shader capabilities. The project incorporates a segmented clock based on a shader tutorial and explores how AI can assist in development. While AI provided limited direct coding assistance, it proved valuable in research, refinement, and optimizing the sit-stand-walk schedule.
+
+Hopefully, no hallucinated sources made it into the final product! :)
 
 # Research and Results
 
