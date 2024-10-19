@@ -17,9 +17,10 @@ func _ready() -> void:
 	current_timer = sit_timer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Calculate minutes and seconds based on TIME
 	var total_seconds = int(current_timer.time_left)
+	@warning_ignore("integer_division")
 	var minutes = (total_seconds / 60) % 60
 	var seconds = total_seconds % 60
 	# Pass the calculated minutes and seconds to the shader

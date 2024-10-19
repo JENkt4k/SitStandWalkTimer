@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://1rhh1bt2ubsh"]
+[gd_scene load_steps=11 format=3 uid="uid://1rhh1bt2ubsh"]
 
 [ext_resource type="Script" path="res://digital_clock_shader.gd" id="1_8oedc"]
 [ext_resource type="Shader" path="res://TimerControl.gdshader" id="1_xb0ld"]
-[ext_resource type="AudioStream" uid="uid://cl31f6fv30x4w" path="res://audio/SitCompleteStanding.ogg" id="3_fb3gt"]
-[ext_resource type="AudioStream" uid="uid://cvu0ispjddufn" path="res://audio/StandingCompleteWalk.ogg" id="4_gl5pm"]
-[ext_resource type="AudioStream" uid="uid://c83h63ukw33rc" path="res://audio/WalkingCompleteSit.ogg" id="5_kls4v"]
+[ext_resource type="AudioStream" uid="uid://dpw4j3dpdetqv" path="res://audio/tts/SitCompleteStanding_TTS.mp3" id="3_5b6tx"]
+[ext_resource type="Texture2D" uid="uid://cpwqmcw6qh1ah" path="res://images/sit_notext.png" id="3_sf1qt"]
+[ext_resource type="Theme" uid="uid://b112xowdwc7fk" path="res://button_theme.tres" id="3_yh2u4"]
+[ext_resource type="Texture2D" uid="uid://xtc7p7tuqinr" path="res://images/stand_notext.png" id="4_b1f0s"]
+[ext_resource type="AudioStream" uid="uid://dk4vged5panj1" path="res://audio/tts/StandingCompleteWalk_TTS.mp3" id="4_fsv1g"]
+[ext_resource type="AudioStream" uid="uid://uxofqtnvbma5" path="res://audio/tts/WalkingCompleteSit_TTS.mp3" id="5_21o2c"]
+[ext_resource type="Texture2D" uid="uid://bp7gqjw5x3q37" path="res://images/walk_notext.png" id="5_p1xco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qs6xh"]
 shader = ExtResource("1_xb0ld")
@@ -42,18 +46,37 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 color = Color(0.909093, 0.455777, 0.75547, 1)
 
-[node name="Sit" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "Sit"
+theme_override_constants/separation = 8
+alignment = 1
 
-[node name="Stand" type="Button" parent="VBoxContainer"]
+[node name="Sit" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Stand"
+size_flags_horizontal = 3
+theme = ExtResource("3_yh2u4")
+theme_override_font_sizes/font_size = 48
+text = "SIT"
+icon = ExtResource("3_sf1qt")
+icon_alignment = 1
 
-[node name="Walk" type="Button" parent="VBoxContainer"]
+[node name="Stand" type="Button" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-text = "Walk
-"
+size_flags_horizontal = 3
+theme = ExtResource("3_yh2u4")
+theme_override_font_sizes/font_size = 48
+text = "STAND"
+icon = ExtResource("4_b1f0s")
+icon_alignment = 1
+
+[node name="Walk" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_yh2u4")
+theme_override_font_sizes/font_size = 48
+text = "WALK"
+icon = ExtResource("5_p1xco")
+icon_alignment = 1
 
 [node name="SitTimer" type="Timer" parent="."]
 wait_time = 600.0
@@ -66,17 +89,17 @@ wait_time = 300.0
 wait_time = 1500.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_fb3gt")
+stream = ExtResource("3_5b6tx")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_gl5pm")
+stream = ExtResource("4_fsv1g")
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_kls4v")
+stream = ExtResource("5_21o2c")
 
-[connection signal="pressed" from="VBoxContainer/Sit" to="VBoxContainer" method="_on_sit_pressed"]
-[connection signal="pressed" from="VBoxContainer/Stand" to="VBoxContainer" method="_on_stand_pressed"]
-[connection signal="pressed" from="VBoxContainer/Walk" to="VBoxContainer" method="_on_walk_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Sit" to="VBoxContainer" method="_on_sit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Stand" to="VBoxContainer" method="_on_stand_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Walk" to="VBoxContainer" method="_on_walk_pressed"]
 [connection signal="timeout" from="SitTimer" to="VBoxContainer" method="_on_sit_timer_timeout"]
 [connection signal="timeout" from="StandTimer" to="VBoxContainer" method="_on_stand_timer_timeout"]
 [connection signal="timeout" from="WalkTimer" to="VBoxContainer" method="_on_walk_timer_timeout"]

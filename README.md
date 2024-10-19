@@ -1,3 +1,9 @@
+<!-- ![img](./icon.svg){ width="50%"} -->
+<img src="./icon.svg" 
+        alt="Picture" 
+        width="300" 
+        style="display: block; margin: 0 auto" />
+
 # Optimal Sit-Stand-Walk
 
 In order to maximize results I've used CGPT to collect and distill research for optimal results. To fill a 8 hr workday, the maximums for daily total time and individaul interval posisitions were used.
